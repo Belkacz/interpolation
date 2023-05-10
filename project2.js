@@ -254,7 +254,7 @@ function mian () {
                 axis: "horizontal",
                 keepInBounds: true,
                 maxZoomIn: 30.0,
-                width: 700,
+                width: 500,
                 height: 600,
                 pointSize: 3,
                 legend: { position: 'bottom' },
