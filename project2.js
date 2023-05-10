@@ -202,9 +202,24 @@ function mian () {
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
 
+
+        let test =[
+            ['X', 'Y', {'type': 'string', 'role': 'style'}],
+              [1, 3, null],
+              [2, 2.5, null],
+              [3, 3, null],
+              [4, 4, null],
+              [5, 4, null],
+              [6, 3, 'point { size: 18; shape-type: star; fill-color: #a52714; }'],
+              [7, 2.5, null],
+              [8, 3, null]
+
+
+        ]
         let listForChart = []
         xListGen.forEach((X, idx)  => {
-            let tempArray = [X, rawYvalues[idx]]
+            console.log(rawYvalues[idx].toFixed(4));
+            let tempArray = [X, rawYvalues[idx], 'point { size: 18; shape-type: star; fill-color: #a52714; }']
             listForChart.push(tempArray)
 
         });
@@ -212,29 +227,47 @@ function mian () {
         function drawChart() {
             let data = new google.visualization.DataTable();
             data.addColumn('number', 'Wartość Osi X');
-            data.addColumn('number', 'warość Osi Y');
-            data.addRows(listForChart);
-
-            let options = {
-            title: 'Wykres Funkcji ',
-            curveType: 'function',
-            pointShape: 'circle',
-            legend: { position: 'bottom' },
-            //chartArea: {left: "5%", width: "60%", top: "15%",bottom: "15%", height: "100%"},
-            explorer: { actions: ["dragToZoom", "rightClickToReset"]},
-            axis: "horizontal",
-            keepInBounds: true,
-            maxZoomIn: 20.0,
-            width: 700,
-            height: 500,
+            data.addColumn('number', 'wartość Osi Y');
+            data.addColumn({type: 'string', role: 'style'}); // kolumna z typem string
         
+            // dodaj punkty do tabeli, przypisując odpowiednie wartości liczbowe i styl punktu
+            listForChart.forEach(function(point) {
+                //console.log(point)
+                let pointY = point[1]
+                if((point[0]== -1 && point[1] == 6) || (point[0]== 0 && point[1] == 1) || (point[0]== 1 && point[1] == 6)
+                    || (point[0]== 2 && point[1].toFixed(4) == 2)){
+ 
+                    data.addRow([point[0], point[1], 'point { size: 8; shape-type: star; fill-color: #a52714; }']);
+                }else{
+                    data.addRow([point[0], point[1], null])
+                }
+                
+            });
+        
+            let options = {
+                title: 'Wykres Funkcji ',
+                curveType: 'function',
+                pointShape: 'circle',
+                legend: { position: 'bottom' },
+                explorer: { actions: ["dragToZoom", "rightClickToReset"]},
+                axis: "horizontal",
+                keepInBounds: true,
+                maxZoomIn: 10.0,
+                width: 700,
+                height: 500,
+                pointSize: 3,
+                series: {
+                    // 0: { 
+                    //     lineWidth: 3, // opcje dla pierwszej serii danych
+                    //     lineDashStyle: [5, 2],
+                    //     pointShape: { type: 'star', sides: 5, dent: 2.05 }
+                    // },
+                }
             };
+        
             let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
             chart.draw(data, options);
-
         }
-
-
     }
 
     
