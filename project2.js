@@ -232,31 +232,33 @@ function mian () {
         
             // dodaj punkty do tabeli, przypisując odpowiednie wartości liczbowe i styl punktu
             // let temp = 2.0000;
-            let ponit1ChangeFlag = false;
-            let ponit2ChangeFlag = false;
+            // let ponit1ChangeFlag = false;
+            // let ponit2ChangeFlag = false;
             listForChart.forEach(function(point, idx) {
                 //console.log(point)
-                let pointY = point[1]
+                //let pointY = point[1]
                 //console.log(point[1].toFixed(4))
                 //console.log(point[0]== 2 && point[1].toFixed(3) == 2)
-                console.log(idx)
+
                 if(point[0].toFixed(4) == -1.0000){
                     data.addRow([-1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
-                if(point[0].toFixed(4) == 0.0000 ){
-                    data.addRow([0, 2, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                else if(point[0].toFixed(4) == 0.0000 ){
+                    data.addRow([0, 1, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
-                if(point[0].toFixed(4) == 1.0000 ){
+                else if(point[0].toFixed(4) == 1.0000 ){
                     data.addRow([1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
-                if(point[0].toFixed(4) == 2.0000 ){
+                else if(point[0].toFixed(4) == 2.0000 ){
                     data.addRow([2, 2, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                }else {
+                    data.addRow([point[0], point[1], null])
                 }
 
-                data.addRow([point[0], point[1], null])
+                
                 
             });
-            console.log(data)
+            //console.log(data)
         
             let options = {
                 title: 'Wykres Funkcji ',
@@ -268,8 +270,8 @@ function mian () {
                 axis: "horizontal",
                 keepInBounds: true,
                 maxZoomIn: 100.0,
-                width: 500,
-                height: 600,
+                width: 600,
+                height: 700,
                 pointSize: 1,
                 legend: { position: 'bottom' },
                 series: {
@@ -324,7 +326,7 @@ function mian () {
 }
 
 function createData(text, contNum=1, array=null){
-    console.log(typeof(text[4]) )
+    //console.log(typeof(text[4]) )
     text.forEach(element => {
         if(typeof(element) == "string"){
         const container = document.getElementById('maincontainer' + contNum);
