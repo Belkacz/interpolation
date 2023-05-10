@@ -144,7 +144,7 @@ function mian () {
 
     let xList = [-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
     let xListGen = []
-    for (let i = -3; i <=4; i += 0.5 ){
+    for (let i = -3; i <=4; i += 0.1 ){
         xListGen.push(i)
     }
 
@@ -189,7 +189,7 @@ function mian () {
         //     container.appendChild(text);
         // });
 
-        createData(["Łukasz Belka indeks 156162", "Dane:", `tablica X: ${tabX}`, `tablica Y: ${tabY}`, listOfYvalues], 1);
+        createData([ "Dane:", `tablica X: ${tabX}`, `tablica Y: ${tabY}`, listOfYvalues], 1);
         createData(["Wielomian interpolujący:", stringWielomian, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopania 2:", stringWielomian2, "aproksymacja wielominu stopania 1:", stringWielomian1], 2);
         // wykres dostepny: https://www.geogebra.org/calculator/tzj6qnrs
         let linkGeo = document.createElement("a");
@@ -218,7 +218,7 @@ function mian () {
         ]
         let listForChart = []
         xListGen.forEach((X, idx)  => {
-            console.log(rawYvalues[idx].toFixed(4));
+            //console.log(rawYvalues[idx].toFixed(4));
             let tempArray = [X, rawYvalues[idx], 'point { size: 18; shape-type: star; fill-color: #a52714; }']
             listForChart.push(tempArray)
 
@@ -231,18 +231,32 @@ function mian () {
             data.addColumn({type: 'string', role: 'style'}); // kolumna z typem string
         
             // dodaj punkty do tabeli, przypisując odpowiednie wartości liczbowe i styl punktu
-            listForChart.forEach(function(point) {
+            // let temp = 2.0000;
+            let ponit1ChangeFlag = false;
+            let ponit2ChangeFlag = false;
+            listForChart.forEach(function(point, idx) {
                 //console.log(point)
                 let pointY = point[1]
-                if((point[0]== -1 && point[1] == 6) || (point[0]== 0 && point[1] == 1) || (point[0]== 1 && point[1] == 6)
-                    || (point[0]== 2 && point[1].toFixed(4) == 2)){
- 
-                    data.addRow([point[0], point[1], 'point { size: 8; shape-type: star; fill-color: #a52714; }']);
-                }else{
-                    data.addRow([point[0], point[1], null])
+                //console.log(point[1].toFixed(4))
+                //console.log(point[0]== 2 && point[1].toFixed(3) == 2)
+                console.log(idx)
+                if(point[0].toFixed(4) == -1.0000){
+                    data.addRow([-1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
+                if(point[0].toFixed(4) == 0.0000 ){
+                    data.addRow([0, 2, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                }
+                if(point[0].toFixed(4) == 1.0000 ){
+                    data.addRow([1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                }
+                if(point[0].toFixed(4) == 2.0000 ){
+                    data.addRow([2, 2, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                }
+
+                data.addRow([point[0], point[1], null])
                 
             });
+            console.log(data)
         
             let options = {
                 title: 'Wykres Funkcji ',
@@ -253,10 +267,10 @@ function mian () {
                 explorer: { actions: ["dragToZoom", "rightClickToReset"]},
                 axis: "horizontal",
                 keepInBounds: true,
-                maxZoomIn: 30.0,
+                maxZoomIn: 100.0,
                 width: 500,
                 height: 600,
-                pointSize: 3,
+                pointSize: 1,
                 legend: { position: 'bottom' },
                 series: {
                     0: { 
