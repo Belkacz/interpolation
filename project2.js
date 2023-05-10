@@ -188,7 +188,7 @@ function mian () {
         // });
 
         createData([ "Dane:", `tablica X: ${tabX}`, `tablica Y: ${tabY}`, listOfYvalues], 1);
-        createData(["Wielomian interpoacja:", stringPolynomial, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopnia 2:", stringPolynomial2, "aproksymacja wielominu stopnia 1:", stringPolynomial1], 2);
+        createData(["Wielomian interpolacja:", stringPolynomial, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopnia 2:", stringPolynomial2, "aproksymacja wielominu stopnia 1:", stringPolynomial1], 2);
         // wykres dostepny: https://www.geogebra.org/calculator/tzj6qnrs
         let linkGeo = document.createElement("a");
         linkGeo.href = "https://www.geogebra.org/calculator/tzj6qnrs";
