@@ -166,13 +166,13 @@ function mian () {
 
 
     let wielomian2 = aproximation(tabX, tabY, 3)
-    console.log('\n aproksymacja wielominu stopania 2:');
+    console.log('\n aproksymacja wielominu stopnia 2:');
     //console.log(wielomian2)
     stringPolynomial2 = wrotePolynomial(wielomian2)
 
     let wielomian1 = aproximation(tabX, tabY, 2)
     //console.log('')
-    console.log('\n aproksymacja wielominu stopania 1:');
+    console.log('\n aproksymacja wielominu stopnia 1:');
     let stringPolynomial1 = wrotePolynomial(wielomian1)
 
     //console.log(newton)
@@ -188,7 +188,7 @@ function mian () {
         // });
 
         createData([ "Dane:", `tablica X: ${tabX}`, `tablica Y: ${tabY}`, listOfYvalues], 1);
-        createData(["Wielomian interpoacja:", stringPolynomial, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopania 2:", stringPolynomial2, "aproksymacja wielominu stopania 1:", stringPolynomial1], 2);
+        createData(["Wielomian interpoacja:", stringPolynomial, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopnia 2:", stringPolynomial2, "aproksymacja wielominu stopnia 1:", stringPolynomial1], 2);
         // wykres dostepny: https://www.geogebra.org/calculator/tzj6qnrs
         let linkGeo = document.createElement("a");
         linkGeo.href = "https://www.geogebra.org/calculator/tzj6qnrs";
