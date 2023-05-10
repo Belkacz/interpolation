@@ -95,7 +95,7 @@ function interpolacjaNewtona(tabX, tabY, xList) {
             //console.log('y')
             //console.log(y)
         }
-        let text = "dla x = " + x + " y = " + y.toFixed(4);
+        let text = "dla x = " + x.toFixed(1) + " y = " + y.toFixed(4);
         console.log(text);
         listOfYvalues.push(text)
         rawYvalues.push(y)
