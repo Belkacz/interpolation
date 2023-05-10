@@ -1,4 +1,4 @@
-function wypiszWielomian(wielomian){
+function wrotePolynomial(wielomian){
     n = wielomian.length;1
     let result = "";
     wielomian.forEach((element, idx) => {
@@ -105,7 +105,7 @@ function interpolacjaNewtona(tabX, tabY, xList) {
 }
 
 
-function aproksymacja(tabX, tabY, n){
+function aproximation(tabX, tabY, n){
     eps = 1e-12
     let macierz = new Array(n).fill(0).map(() => new Array(n+1).fill(0));
 
@@ -140,7 +140,7 @@ function aproksymacja(tabX, tabY, n){
 
 function mian () {
     let tabX = [-1, 0, 1, 2]
-    let tabY = [6, 1, 6, 2]
+    let tabY = [5, 6, 4, 7]
 
     let xList = [-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
     let xListGen = []
@@ -148,34 +148,32 @@ function mian () {
         xListGen.push(i)
     }
 
-
-
     console.log("Łukasz Belka indeks 156162")
     console.log("Dane:")
     console.log("tablica X: " + tabX)
     console.log("tablica Y: " + tabY + "\n")
 
-    let wielomian = aproksymacja(tabX, tabY, 4)
+    let wielomian = aproximation(tabX, tabY, tabX.length)
 
     let {rozniceDzielone, listOfYvalues, rawYvalues} = interpolacjaNewtona(tabX, tabY, xListGen);
     //console.log(listOfYvalues)
 
     console.log('\n Wielomian interpolujący:');
-    stringWielomian = wypiszWielomian(wielomian)
+    stringPolynomial = wrotePolynomial(wielomian)
 
     console.log("\n Tablica różnic dzielonych")
     console.log(rozniceDzielone)
 
 
-    let wielomian2 = aproksymacja(tabX, tabY, 3)
+    let wielomian2 = aproximation(tabX, tabY, 3)
     console.log('\n aproksymacja wielominu stopania 2:');
     //console.log(wielomian2)
-    stringWielomian2 = wypiszWielomian(wielomian2)
+    stringPolynomial2 = wrotePolynomial(wielomian2)
 
-    let wielomian1 = aproksymacja(tabX, tabY, 2)
+    let wielomian1 = aproximation(tabX, tabY, 2)
     //console.log('')
     console.log('\n aproksymacja wielominu stopania 1:');
-    let stringWielomian1 = wypiszWielomian(wielomian1)
+    let stringPolynomial1 = wrotePolynomial(wielomian1)
 
     //console.log(newton)
 
@@ -190,7 +188,7 @@ function mian () {
         // });
 
         createData([ "Dane:", `tablica X: ${tabX}`, `tablica Y: ${tabY}`, listOfYvalues], 1);
-        createData(["Wielomian interpolujący:", stringWielomian, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopania 2:", stringWielomian2, "aproksymacja wielominu stopania 1:", stringWielomian1], 2);
+        createData(["Wielomian interpoacja:", stringPolynomial, `Tablica różnic dzielonych`, rozniceDzielone.join(" , "), "aproksymacja wielominu stopania 2:", stringPolynomial2, "aproksymacja wielominu stopania 1:", stringPolynomial1], 2);
         // wykres dostepny: https://www.geogebra.org/calculator/tzj6qnrs
         let linkGeo = document.createElement("a");
         linkGeo.href = "https://www.geogebra.org/calculator/tzj6qnrs";
@@ -201,21 +199,6 @@ function mian () {
 
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-
-
-        let test =[
-            ['X', 'Y', {'type': 'string', 'role': 'style'}],
-              [1, 3, null],
-              [2, 2.5, null],
-              [3, 3, null],
-              [4, 4, null],
-              [5, 4, null],
-              [6, 3, 'point { size: 18; shape-type: star; fill-color: #a52714; }'],
-              [7, 2.5, null],
-              [8, 3, null]
-
-
-        ]
         let listForChart = []
         xListGen.forEach((X, idx)  => {
             //console.log(rawYvalues[idx].toFixed(4));
@@ -241,16 +224,16 @@ function mian () {
                 //console.log(point[0]== 2 && point[1].toFixed(3) == 2)
 
                 if(point[0].toFixed(4) == -1.0000){
-                    data.addRow([-1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                    data.addRow([-1, tabY[0], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
                 else if(point[0].toFixed(4) == 0.0000 ){
-                    data.addRow([0, 1, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                    data.addRow([0, tabY[1], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
                 else if(point[0].toFixed(4) == 1.0000 ){
-                    data.addRow([1, 6, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                    data.addRow([1, tabY[2], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }
                 else if(point[0].toFixed(4) == 2.0000 ){
-                    data.addRow([2, 2, 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                    data.addRow([2, tabY[3], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
                 }else {
                     data.addRow([point[0], point[1], null])
                 }
