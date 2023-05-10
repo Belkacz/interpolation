@@ -140,7 +140,7 @@ function aproximation(tabX, tabY, n){
 
 function mian () {
     let tabX = [-1, 0, 1, 2]
-    let tabY = [5, 6, 4, 7]
+    let tabY = [6, 1, 6, 2]
 
     let xList = [-3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
     let xListGen = []
@@ -223,20 +223,29 @@ function mian () {
                 //console.log(point[1].toFixed(4))
                 //console.log(point[0]== 2 && point[1].toFixed(3) == 2)
 
-                if(point[0].toFixed(4) == -1.0000){
-                    data.addRow([-1, tabY[0], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                for(let i = 0; i <= tabX.length; i ++){
+                    if(point[0].toFixed(4) == tabX[i]){
+                        data.addRow([point[0], point[1], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                    }
+                    else {
+                        data.addRow([point[0], point[1], null])
+                    }
                 }
-                else if(point[0].toFixed(4) == 0.0000 ){
-                    data.addRow([0, tabY[1], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
-                }
-                else if(point[0].toFixed(4) == 1.0000 ){
-                    data.addRow([1, tabY[2], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
-                }
-                else if(point[0].toFixed(4) == 2.0000 ){
-                    data.addRow([2, tabY[3], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
-                }else {
-                    data.addRow([point[0], point[1], null])
-                }
+
+                // if(point[0].toFixed(4) == -1.0000){
+                //     data.addRow([-1, tabY[0], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                // }
+                // else if(point[0].toFixed(4) == 0.0000 ){
+                //     data.addRow([0, tabY[1], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                // }
+                // else if(point[0].toFixed(4) == 1.0000 ){
+                //     data.addRow([1, tabY[2], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                // }
+                // else if(point[0].toFixed(4) == 2.0000 ){
+                //     data.addRow([2, tabY[3], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                // }else {
+                //     data.addRow([point[0], point[1], null])
+                // }
 
                 
                 
