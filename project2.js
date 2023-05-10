@@ -247,24 +247,60 @@ function mian () {
             let options = {
                 title: 'Wykres Funkcji ',
                 curveType: 'function',
+                chartArea: { left: '10%', width: '100%', top: '10%', height: '80%' },
                 pointShape: 'circle',
                 legend: { position: 'bottom' },
                 explorer: { actions: ["dragToZoom", "rightClickToReset"]},
                 axis: "horizontal",
                 keepInBounds: true,
-                maxZoomIn: 10.0,
+                maxZoomIn: 30.0,
                 width: 700,
-                height: 500,
+                height: 600,
                 pointSize: 3,
+                legend: { position: 'bottom' },
                 series: {
-                    // 0: { 
-                    //     lineWidth: 3, // opcje dla pierwszej serii danych
-                    //     lineDashStyle: [5, 2],
-                    //     pointShape: { type: 'star', sides: 5, dent: 2.05 }
-                    // },
-                }
+                    0: { 
+                        // lineWidth: 3, // opcje dla pierwszej serii danych
+                        // lineDashStyle: [5, 2],
+                        // pointShape: { type: 'star', sides: 5, dent: 2.05 },
+                        label: 'Druga seria danych'
+                    },
+                },
+                hAxis: {
+                    //viewWindowMode: 'pretty',
+                    title: 'Wartość Osi X',
+                    //  minValue: 3,
+                    maxValue: 1,
+                    titleTextStyle: {
+                      color: '#333',
+                      fontSize: 14,
+                      bold: true,
+                      italic: false
+                    },
+                    textStyle: {
+                        color: '#333',
+                        fontSize: 12,
+                        bold: false,
+                        italic: false
+                      },
+                    },
+                    vAxis: {
+                        title: 'Wartość Osi Y',
+                        titleTextStyle: {
+                          color: '#333',
+                          fontSize: 14,
+                          bold: true,
+                          italic: false
+                        },
+                        textStyle: {
+                          color: '#333',
+                          fontSize: 12,
+                          bold: false,
+                          italic: false
+                        },
+                      }
+                
             };
-        
             let chart = new google.visualization.LineChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
