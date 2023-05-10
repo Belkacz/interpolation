@@ -225,7 +225,7 @@ function mian () {
 
                 for(let i = 0; i <= tabX.length; i ++){
                     if(point[0].toFixed(4) == tabX[i]){
-                        data.addRow([point[0], point[1], 'point { size: 6; shape-type: star; fill-color: #a52714;, curveType: none }'])
+                        data.addRow([point[0], point[1], 'point { size: 8; shape-type: star; fill-color: #a52714;, curveType: none }'])
                     }
                     else {
                         data.addRow([point[0], point[1], null])
