@@ -210,7 +210,7 @@ function mian () {
         function drawChart() {
             let data = new google.visualization.DataTable();
             data.addColumn('number', 'Wartość Osi X');
-            data.addColumn('number', 'wartość Osi Y');
+            data.addColumn('number', 'Wartość Osi Y');
             data.addColumn({type: 'string', role: 'style'}); // kolumna z typem string
         
             // dodaj punkty do tabeli, przypisując odpowiednie wartości liczbowe i styl punktu
