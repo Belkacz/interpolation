@@ -7,5 +7,5 @@ X: -1,0,1,2
 Y: 6,1,6,2
 ofcourse code can support another inputs and even more than 4.
 
-# Preview(https://belkacz.github.io/interpolation/project2.html)
+# [Preview](https://belkacz.github.io/interpolation/project2.html)
 https://belkacz.github.io/interpolation/project2.html
